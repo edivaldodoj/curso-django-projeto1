@@ -11,7 +11,10 @@ fake = Faker('pt_BR')
 
 def make_recipe():
     return {
+<<<<<<< HEAD
         'id': fake.random_number(digits=2, fix_len=True),
+=======
+>>>>>>> 1b656651d33f60c01d1df56ec6e5cc18375116a7
         'title': fake.sentence(nb_words=6),
         'description': fake.sentence(nb_words=12),
         'preparation_time': fake.random_number(digits=2, fix_len=True),
