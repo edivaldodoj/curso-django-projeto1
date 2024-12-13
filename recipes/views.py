@@ -8,6 +8,13 @@ def home(request):
     return render(request, 'recipes/pages/home.html', context={
         'recipes': recipes,
     })
+    
+    
+def home(request, category_id):
+    recipes = Recipe.objects.filter(category__id=category_id).order_by('-id')
+    return render(request, 'recipes/pages/home.html', context={
+        'recipes': recipes,
+    })
 
 
 def recipe(request, id):
@@ -15,3 +22,6 @@ def recipe(request, id):
         'recipe': make_recipe(),
         'is_detail_page': True
     })
+    
+    
+
