@@ -1,8 +1,8 @@
 {% extends 'global/base.html' %}
 
+category_title = Category.objects.values("name")
 
-
-{% block title %}{{recipe.category.name}}{% endblock title %}
+{% block title %}{{category_title}}{% endblock title %}
 
 {% block content %}
 

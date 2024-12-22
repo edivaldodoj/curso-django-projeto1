@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from utils.recipes.factory import make_recipe
-from . models import Recipe
+from . models import Recipe, Category
 
 
 def home(request):
@@ -23,6 +23,5 @@ def recipe(request, id):
         'recipe': recipe,
         'is_detail_page': True
     })
-    
     
 
