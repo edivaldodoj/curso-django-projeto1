@@ -1,3 +1,4 @@
+from django.http import Http404
 from django.shortcuts import render
 from utils.recipes.factory import make_recipe
 from . models import Recipe, Category
@@ -12,8 +13,13 @@ def home(request):
     
 def category(request, category_id):
     recipes = Recipe.objects.filter(category__id=category_id).order_by('-id')
+    
+    if not recipes:
+        raise Http404('Pagina não encontrada')
+    
     return render(request, 'recipes/pages/category.html', context={
-        'recipes': recipes
+        'recipes': recipes,
+        'title': f'Categoria | {recipes.first().category.name}'
     })
 
 
@@ -23,3 +29,8 @@ def recipe(request, id):
         'recipe': recipe,
         'is_detail_page': True
     })
+    
+    
+
+def teste(request):
+    return render(request, 'recipes/pages/teste.html')
