@@ -1,7 +1,7 @@
 from django.http import Http404
 from django.shortcuts import render
 from utils.recipes.factory import make_recipe
-from . models import Recipe, Category
+from . models import Recipe
 
 
 def home(request):
@@ -24,12 +24,13 @@ def category(request, category_id):
 
 
 def recipe(request, id):
+    
     recipe = Recipe.objects.get(id=id)
     return render(request, 'recipes/pages/recipe-view.html', context={
+        
         'recipe': recipe,
         'is_detail_page': True
     })
-    
     
 
 def teste(request):
